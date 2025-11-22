@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gallery — Véla Jewellery</title>
+    <link rel="stylesheet" href="/css/gallery.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/html/index.html">Véla Jewellery</a>
+        <button
+          id="navToggle"
+          class="nav-toggle"
+          aria-label="Toggle navigation"
+        >
+          ☰
+        </button>
+        <nav class="nav" id="mainNav">
+          <a href="/html/index.html">Home</a>
+          <a href="/html/about.html">About</a>
+          <a href="/html/gallery.html">Gallery</a>
+          <a href="/html/contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="galleryHeader" class="fade-element">
+        <h1 id="galleryTitle">Gallery</h1>
+        <p id="galleryDesc">Click an item to view larger.</p>
+      </section>
+
+      <section id="galleryGrid" class="gallery-grid fade-element">
+        <!-- JS populates images here -->
+      </section>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <button id="lbClose" class="lb-close">✕</button>
+      <img id="lbImg" src="" alt="" />
+      <p id="lbCaption"></p>
+    </div>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/gallery.js"></script>
+  </body>
+</html>
