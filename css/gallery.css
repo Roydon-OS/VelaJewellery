@@ -1,0 +1,228 @@
+/* ----------------------------------------------------------
+   GLOBAL / REPEATED BASE STYLES
+---------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #fafafa;
+  color: #222;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ----------------------------------------------------------
+   HEADER (same look as home page)
+---------------------------------------------------------- */
+.site-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #eee;
+  z-index: 999;
+  transition: background 0.3s ease;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.brand {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #111;
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  gap: 25px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: opacity 0.2s ease;
+}
+
+.nav a:hover {
+  opacity: 0.6;
+}
+
+/* ---- MOBILE NAV ---- */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background: white;
+    padding: 20px 0;
+    flex-direction: column;
+    gap: 20px;
+    display: none;
+  }
+
+  .nav.show {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
+/* ----------------------------------------------------------
+   PAGE HEADER
+---------------------------------------------------------- */
+main {
+  margin-top: 110px;
+  padding-bottom: 60px;
+}
+
+#galleryHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#galleryHeader h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+#galleryDesc {
+  margin-top: 8px;
+  opacity: 0.75;
+}
+
+/* ----------------------------------------------------------
+   GALLERY GRID
+---------------------------------------------------------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-item img {
+  border-radius: 8px;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* ----------------------------------------------------------
+   LIGHTBOX MODAL
+---------------------------------------------------------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.show {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 70vh;
+  border-radius: 8px;
+}
+
+#lbCaption {
+  margin-top: 15px;
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+  max-width: 800px;
+}
+
+.lb-close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+}
+
+.lb-close:hover {
+  opacity: 0.7;
+}
+
+/* ----------------------------------------------------------
+   FADE-IN ON SCROLL
+---------------------------------------------------------- */
+.fade-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-element.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
