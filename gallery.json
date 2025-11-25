@@ -1,0 +1,30 @@
+{
+  "necklaces": [
+    {
+      "name": "Diamond Heart Necklace",
+      "price": 1200,
+      "image": "images/homepage/bracelet.jpg"
+    }
+  ],
+  "rings": [
+    {
+      "name": "Rose Gold Ring",
+      "price": 900,
+      "image": "images/homepage/bracelet.jpg"
+    }
+  ],
+  "bracelets": [
+    {
+      "name": "Pearl Bracelet",
+      "price": 650,
+      "image": "images/homepage/bracelet.jpg"
+    }
+  ],
+  "earrings": [
+    {
+      "name": "Crystal Drop Earrings",
+      "price": 450,
+      "image": "images/homepage/bracelet.jpg"
+    }
+  ]
+}

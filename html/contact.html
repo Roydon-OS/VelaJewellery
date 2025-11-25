@@ -1,47 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contact — Véla Jewellery</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Véla Jewellery — Contact</title>
     <link rel="stylesheet" href="/css/contact.css" />
   </head>
+
   <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="/html/index.html">Véla Jewellery</a>
-        <button
-          id="navToggle"
-          class="nav-toggle"
-          aria-label="Toggle navigation"
-        >
-          ☰
-        </button>
-        <nav class="nav" id="mainNav">
-          <a href="/html/index.html">Home</a>
-          <a href="/html/about.html">About</a>
-          <a href="/html/gallery.html">Gallery</a>
-          <a href="/html/contact.html">Contact</a>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="container nav-inner">
+        <div class="logo">Véla Jewellery</div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/html/gallery.html">Gallery</a></li>
+            <li><a href="/html/about.html">About</a></li>
+            <li><a href="/html/contact.html" class="active">Contact</a></li>
+          </ul>
         </nav>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">☰</div>
       </div>
     </header>
 
-    <main class="container fade-element">
-      <h1>Contact</h1>
-      <p>
-        Email:
-        <a href="mailto:hello@vela-jewellery.com">hello@vela-jewellery.com</a>
-      </p>
-      <p>Phone: <a href="tel:+27123456789">+27 12 345 6789</a></p>
-      <p>Socials: @velajewellery (Instagram, Facebook, TikTok)</p>
-    </main>
+    <!-- CONTACT HERO -->
+    <section class="contact-hero">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Contact Us</h1>
+        <p>We’d love to hear from you.</p>
+      </div>
+    </section>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p>&copy; <span id="year"></span> Véla Jewellery</p>
+    <!-- CONTACT DETAILS SECTION -->
+    <section class="contact-section">
+      <div class="container contact-container">
+        <div class="contact-box">
+          <h2>Get in Touch</h2>
+
+          <p>
+            <strong>Email:</strong><br />
+            <a href="mailto:velajewelleryofficial@gmail.com">
+              velajewelleryofficial@gmail.com
+            </a>
+          </p>
+
+          <p>
+            <strong>Phone:</strong><br />
+            <a href="tel:0747139103">074 713 9103</a>
+          </p>
+
+          <div class="socials">
+            <a
+              href="https://www.instagram.com/vela_jewellery_?igsh=Ymt6MHQ2MmNtd2tl"
+              target="_blank"
+              class="social-icon"
+            >
+              <img src="/images/icons/instagram.svg" alt="Instagram" />
+            </a>
+
+            <a
+              href="https://www.facebook.com/share/16KFDhfgn7/?mibextid=wwXIfr"
+              target="_blank"
+              class="social-icon"
+            >
+              <img src="/images/icons/facebook.svg" alt="Facebook" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>© 2025 Véla Jewellery — All Rights Reserved.</p>
       </div>
     </footer>
 
-    <script src="/js/main.js"></script>
+    <script src="/js/contact.js"></script>
   </body>
 </html>

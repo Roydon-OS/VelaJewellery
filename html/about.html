@@ -1,49 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About — Véla Jewellery</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Véla Jewellery — About</title>
     <link rel="stylesheet" href="/css/about.css" />
   </head>
+
   <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="/html/index.html">Véla Jewellery</a>
-        <button
-          id="navToggle"
-          class="nav-toggle"
-          aria-label="Toggle navigation"
-        >
-          ☰
-        </button>
-        <nav class="nav" id="mainNav">
-          <a href="/html/index.html">Home</a>
-          <a href="/html/about.html">About</a>
-          <a href="/html/gallery.html">Gallery</a>
-          <a href="/html/contact.html">Contact</a>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="container nav-inner">
+        <div class="logo">Véla Jewellery</div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/html/gallery.html">Gallery</a></li>
+            <li><a href="/html/about.html" class="active">About</a></li>
+            <li><a href="/html/contact.html">Contact</a></li>
+          </ul>
         </nav>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">☰</div>
       </div>
     </header>
 
-    <main class="container fade-element">
-      <h1>About Véla</h1>
-      <p>
-        Véla Jewellery was founded with a vision to combine classic elegance
-        with modern sensibilities. Each piece is handcrafted using high-quality
-        metals and gemstones.
-      </p>
-      <p>
-        We focus on timeless design, craftsmanship, and sustainable sourcing.
-      </p>
-    </main>
+    <!-- ABOUT HERO -->
+    <section class="about-hero">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Our Story</h1>
+        <p>Timeless beauty, crafted by hand.</p>
+      </div>
+    </section>
 
-    <footer class="site-footer">
+    <!-- MAIN ABOUT SECTION -->
+    <section class="about-section">
+      <div class="container about-container">
+        <div class="about-image">
+          <img src="/images/about/workshop.jpg" alt="Jewellery Workshop" />
+        </div>
+
+        <div class="about-text">
+          <h2>Crafted With Purpose</h2>
+          <p>
+            Véla Jewellery was founded with a passion for elegant, meaningful
+            design. Each piece is handcrafted with meticulous detail, blending
+            traditional techniques with modern artistry.
+          </p>
+
+          <p>
+            Our mission is to create jewellery that carries emotion — pieces
+            that become part of your story, treasured for years to come.
+          </p>
+
+          <p>
+            We believe in quality, authenticity, and the beauty of
+            craftsmanship. Every necklace, ring, and bracelet is made with care,
+            using high-quality materials sourced responsibly.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES SECTION -->
+    <section class="values">
       <div class="container">
-        <p>&copy; <span id="year"></span> Véla Jewellery</p>
+        <h2>Our Values</h2>
+
+        <div class="values-grid">
+          <div class="value-card">
+            <h3>Handcrafted Artistry</h3>
+            <p>
+              Every piece is made by hand, ensuring individuality and
+              exceptional detail.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <h3>Premium Materials</h3>
+            <p>
+              We select only high-quality metals, stones, and materials to
+              ensure long-lasting beauty.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <h3>Meaningful Design</h3>
+            <p>
+              Our jewellery is created to celebrate life’s important moments,
+              big and small.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>© 2025 Véla Jewellery — All Rights Reserved.</p>
       </div>
     </footer>
 
-    <script src="/js/main.js"></script>
+    <script src="/js/about.js"></script>
   </body>
 </html>

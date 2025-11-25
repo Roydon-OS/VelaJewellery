@@ -1,78 +1,114 @@
-// gallery.js - loads images.json and populates the gallery
-(async function () {
-  const placeholder =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmrDDrc-6BUaso8th2bVUxJI8rpvTVa-Zpbg&s";
-  const galleryGrid = document.getElementById("galleryGrid");
-  const galleryTitle = document.getElementById("galleryTitle");
-  const params = new URLSearchParams(location.search);
-  const requested = params.get("cat"); // e.g., rings, necklaces, bracelets, best-selling
-  const caption = document.getElementById("lbCaption");
+// gallery.js
+// - Fetches /data/gallery.json
+// - Builds sections for necklaces, rings, bracelets, earrings
+// - Matches site navbar mobile menu behavior
 
-  // Load images.json
-  let images = [];
-  try {
-    const res = await fetch("/images.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("no manifest");
-    images = await res.json();
-  } catch (e) {
-    // fallback: create one-per-category placeholder entries
-    images = [
-      { src: placeholder, category: "rings", alt: "Rings" },
-      { src: placeholder, category: "necklaces", alt: "Necklaces" },
-      { src: placeholder, category: "bracelets", alt: "Bracelets" },
-      { src: placeholder, category: "best-selling", alt: "Best selling" },
-    ];
+document.addEventListener("DOMContentLoaded", () => {
+  // Mobile nav toggle (same behavior as other pages)
+  const mobileBtn = document.getElementById("mobileMenuBtn");
+  const navLinks = document.querySelector(".nav-links");
+  if (mobileBtn && navLinks) {
+    mobileBtn.addEventListener("click", () => {
+      navLinks.style.display =
+        navLinks.style.display === "flex" ? "none" : "flex";
+    });
   }
 
-  // Filter by requested category if present
-  let toShow = images;
-  if (requested) {
-    toShow = images.filter((i) => i.category === requested);
-    galleryTitle.textContent = requested
-      .replace(/-/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
-  }
+  const root = document.getElementById("gallery-root");
+  const loadingEl = document.getElementById("gallery-loading");
+  const errorEl = document.getElementById("gallery-error");
 
-  // Populate grid
-  if (galleryGrid) {
-    if (toShow.length === 0) {
-      galleryGrid.innerHTML =
-        "<p>No images found for this collection. Add images to the images folder and update images.json.</p>";
+  // path to JSON file (place this file at /data/gallery.json)
+  const JSON_PATH = "/data/gallery.json";
+
+  fetch(JSON_PATH, { cache: "no-cache" })
+    .then((resp) => {
+      if (!resp.ok) throw new Error(`HTTP ${resp.status} ${resp.statusText}`);
+      return resp.json();
+    })
+    .then((data) => {
+      loadingEl?.remove();
+      renderGallery(data, root);
+    })
+    .catch((err) => {
+      console.error("Gallery load error:", err);
+      if (loadingEl) loadingEl.remove();
+      errorEl.hidden = false;
+      errorEl.textContent =
+        "Unable to load gallery data. Make sure /data/gallery.json exists and is valid JSON.";
+    });
+});
+
+/**
+ * Render gallery sections from the JSON structure.
+ * Expected JSON shape:
+ * {
+ *   "necklaces": [{ "name":"", "price":123, "image":"/images/gallery/necklaces/x.jpg" }, ...],
+ *   "rings": [...],
+ *   "bracelets": [...],
+ *   "earrings": [...]
+ * }
+ */
+function renderGallery(data, container) {
+  const order = ["necklaces", "rings", "bracelets", "earrings"];
+  order.forEach((sectionKey) => {
+    const items = data[sectionKey] || [];
+    const sectionEl = document.createElement("section");
+    sectionEl.className = "gallery-section";
+
+    const heading = document.createElement("h2");
+    heading.textContent = capitalize(sectionKey);
+    sectionEl.appendChild(heading);
+
+    const grid = document.createElement("div");
+    grid.className = "gallery-grid";
+
+    if (items.length === 0) {
+      const emptyMsg = document.createElement("p");
+      emptyMsg.textContent = "No items yet.";
+      emptyMsg.style.color = "var(--muted)";
+      sectionEl.appendChild(emptyMsg);
     } else {
-      galleryGrid.innerHTML = "";
-      toShow.forEach((imgObj, idx) => {
-        const img = document.createElement("img");
-        img.dataset.src = imgObj.src || placeholder;
-        img.alt = imgObj.alt || "";
-        img.loading = "lazy";
-        img.addEventListener("click", () => openLightbox(imgObj));
-        // set src but ensure it won't break; the path should work on your Live Server
-        img.src = imgObj.src || placeholder;
-        galleryGrid.appendChild(img);
-      });
-    }
-  }
+      items.forEach((item) => {
+        const card = document.createElement("div");
+        card.className = "gallery-item";
 
-  // Lightbox
-  const lb = document.getElementById("lightbox");
-  const lbImg = document.getElementById("lbImg");
-  const lbClose = document.getElementById("lbClose");
-  function openLightbox(imgObj) {
-    lbImg.src = imgObj.src || placeholder;
-    caption && (caption.textContent = imgObj.alt || "");
-    lb.style.display = "flex";
-    lb.setAttribute("aria-hidden", "false");
-  }
-  lbClose &&
-    lbClose.addEventListener("click", () => {
-      lb.style.display = "none";
-      lb.setAttribute("aria-hidden", "true");
-    });
-  lb &&
-    lb.addEventListener("click", (e) => {
-      if (e.target === lb) {
-        lb.style.display = "none";
-        lb.setAttribute("aria-hidden", "true");
-      }
-    });
-})();
+        // image (use lazy loading)
+        const img = document.createElement("img");
+        img.className = "thumb";
+        // if image path is relative, make it safe - user JSON should use absolute-from-root paths (e.g. /images/...)
+        img.src = item.image;
+        img.alt = item.name || "Véla piece";
+        img.loading = "lazy";
+
+        const info = document.createElement("div");
+        info.className = "info";
+
+        const name = document.createElement("div");
+        name.className = "name";
+        name.textContent = item.name || "Unnamed";
+
+        const price = document.createElement("div");
+        price.className = "price";
+        // show currency properly
+        price.textContent = item.price !== undefined ? `R ${item.price}` : "";
+
+        info.appendChild(name);
+        info.appendChild(price);
+
+        card.appendChild(img);
+        card.appendChild(info);
+        grid.appendChild(card);
+      });
+
+      sectionEl.appendChild(grid);
+    }
+
+    container.appendChild(sectionEl);
+  });
+}
+
+function capitalize(str) {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}

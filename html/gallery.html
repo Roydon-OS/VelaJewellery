@@ -2,49 +2,52 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gallery — Véla Jewellery</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Véla Jewellery — Gallery</title>
+    <!-- gallery CSS imports the main site CSS so colors/fonts/header match -->
     <link rel="stylesheet" href="/css/gallery.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="/html/index.html">Véla Jewellery</a>
-        <button
-          id="navToggle"
-          class="nav-toggle"
-          aria-label="Toggle navigation"
-        >
-          ☰
-        </button>
-        <nav class="nav" id="mainNav">
-          <a href="/html/index.html">Home</a>
-          <a href="/html/about.html">About</a>
-          <a href="/html/gallery.html">Gallery</a>
-          <a href="/html/contact.html">Contact</a>
+    <!-- NAVBAR (same structure as other pages) -->
+    <header class="navbar">
+      <div class="container nav-inner">
+        <div class="logo">Véla Jewellery</div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/html/gallery.html" class="active">Gallery</a></li>
+            <li><a href="/html/about.html">About</a></li>
+            <li><a href="/html/contact.html">Contact</a></li>
+          </ul>
         </nav>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">☰</div>
       </div>
     </header>
 
-    <main class="container">
-      <section id="galleryHeader" class="fade-element">
-        <h1 id="galleryTitle">Gallery</h1>
-        <p id="galleryDesc">Click an item to view larger.</p>
-      </section>
+    <!-- HERO (matches About/Contact) -->
+    <section class="gallery-hero">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Our Collection</h1>
+        <p>Handcrafted necklaces, rings, bracelets and earrings</p>
+      </div>
+    </section>
 
-      <section id="galleryGrid" class="gallery-grid fade-element">
-        <!-- JS populates images here -->
-      </section>
+    <!-- GALLERY CONTAINER -->
+    <main id="gallery-root" class="container">
+      <!-- JS will insert sections here -->
+      <div id="gallery-loading" class="loading">Loading gallery…</div>
+      <div id="gallery-error" class="error" hidden></div>
     </main>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox" aria-hidden="true">
-      <button id="lbClose" class="lb-close">✕</button>
-      <img id="lbImg" src="" alt="" />
-      <p id="lbCaption"></p>
-    </div>
+    <!-- FOOTER (same as other pages) -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>© 2025 Véla Jewellery — All Rights Reserved.</p>
+      </div>
+    </footer>
 
-    <script src="/js/main.js"></script>
-    <script src="/js/gallery.js"></script>
+    <!-- scripts -->
+    <script src="/js/gallery.js" defer></script>
   </body>
 </html>
