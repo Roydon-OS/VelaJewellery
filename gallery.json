@@ -3,28 +3,83 @@
     {
       "name": "Diamond Heart Necklace",
       "price": 1200,
-      "image": "images/homepage/bracelet.jpg"
+      "image": "/images/necklaces/neclace.jpg"
     }
   ],
   "rings": [
     {
       "name": "Rose Gold Ring",
       "price": 900,
-      "image": "images/homepage/bracelet.jpg"
+      "image": "/images/rings/ring.jpg"
+    },
+    {
+      "name": "Rose Gold Ring",
+      "price": 900,
+      "image": "/images/rings/ring.jpg"
+    },
+    {
+      "name": "Rose Gold Ring",
+      "price": 900,
+      "image": "/images/rings/ring.jpg"
     }
   ],
   "bracelets": [
     {
       "name": "Pearl Bracelet",
       "price": 650,
-      "image": "images/homepage/bracelet.jpg"
+      "image": "/images/bracelets/bracelet.jpg"
+    },
+    {
+      "name": "Pearl Bracelet",
+      "price": 650,
+      "image": "/images/bracelets/bracelet.jpg"
     }
   ],
   "earrings": [
     {
       "name": "Crystal Drop Earrings",
       "price": 450,
-      "image": "images/homepage/bracelet.jpg"
+      "image": "/images/earrings/Earrings.png"
+    },
+    {
+      "name": "Crystal Drop Earrings",
+      "price": 450,
+      "image": "/images/earrings/Earrings.png"
+    },
+    {
+      "name": "Crystal Drop Earrings",
+      "price": 450,
+      "image": "/images/earrings/Earrings.png"
+    },
+    {
+      "name": "Crystal Drop Earrings",
+      "price": 450,
+      "image": "/images/earrings/Earrings.png"
+    },
+    {
+      "name": "Crystal Drop Earrings",
+      "price": 450,
+      "image": "/images/earrings/Earrings.png"
+    },
+    {
+      "name": "Crystal Drop Earrings",
+      "price": 450,
+      "image": "/images/earrings/Earrings.png"
+    },
+    {
+      "name": "Crystal Drop Earrings",
+      "price": 450,
+      "image": "/images/earrings/Earrings.png"
+    },
+    {
+      "name": "Crystal Drop Earrings",
+      "price": 450,
+      "image": "/images/earrings/Earrings.png"
+    },
+    {
+      "name": "Crystal Drop Earrings",
+      "price": 450,
+      "image": "/images/earrings/Earrings.png"
     }
   ]
 }

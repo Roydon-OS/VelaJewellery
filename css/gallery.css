@@ -1,7 +1,7 @@
-/* import site variables / base styles so this page matches the rest */
+/* import site base styles so navbar, fonts, colors match */
 @import url("/css/index.css");
 
-/* page-specific customizations */
+/* HERO SECTION */
 .gallery-hero {
   position: relative;
   height: 55vh;
@@ -33,12 +33,12 @@
   opacity: 0.95;
 }
 
-/* gallery layout (uses your same container width) */
+/* GALLERY CONTAINER */
 #gallery-root {
   padding: 60px 0 80px;
 }
 
-/* loading / error */
+/* Loading/Error */
 .loading {
   text-align: center;
   padding: 40px 0;
@@ -55,7 +55,7 @@
   margin-bottom: 20px;
 }
 
-/* section title */
+/* SECTION TITLE */
 .gallery-section {
   margin-top: 40px;
   margin-bottom: 18px;
@@ -65,17 +65,24 @@
   color: var(--gold-1);
   font-size: 1.9rem;
   margin: 0 0 18px;
+  text-align: center;
 }
 
-/* grid */
+/* GRID */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 280px)
+  ); /* FIXED WIDTH */
   gap: 26px;
+  justify-content: center; /* center items if few */
 }
 
-/* item card matches style used across site */
+/* ITEM CARD */
 .gallery-item {
+  width: 280px; /* fixed width */
+  height: 400px; /* fixed height */
   background: white;
   border-radius: 8px;
   overflow: hidden;
@@ -89,17 +96,23 @@
   transform: translateY(-6px);
 }
 
+/* IMAGE */
 .gallery-item .thumb {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
+  height: 60%; /* top 60% of card */
+  object-fit: cover; /* fill box without distortion */
   display: block;
+  border-bottom: 1px solid #eaeaea;
 }
 
+/* ITEM INFO */
 .gallery-item .info {
-  padding: 14px;
+  padding: 12px;
   text-align: center;
   flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center content */
 }
 
 .gallery-item .name {
@@ -113,14 +126,37 @@
   font-weight: 700;
 }
 
-/* tiny responsiveness */
-@media (max-width: 850px) {
+/* Responsive */
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
+  }
+
+  .gallery-item {
+    width: 220px;
+    height: 360px;
+  }
+
+  .gallery-item .thumb {
+    height: 60%;
+  }
+
   .gallery-hero h1 {
     font-size: 2.4rem;
   }
-  .gallery-item .thumb {
-    height: 200px;
-  }
 }
 
-/* nav-links are already defined in index.css; mobile menu toggles it */
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 180px));
+  }
+
+  .gallery-item {
+    width: 180px;
+    height: 320px;
+  }
+
+  .gallery-item .thumb {
+    height: 60%;
+  }
+}
