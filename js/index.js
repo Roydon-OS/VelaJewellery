@@ -22,7 +22,7 @@ function scrollAnimateSections() {
 window.addEventListener("scroll", scrollAnimateSections);
 window.addEventListener("load", scrollAnimateSections);
 
-// HERO GALLERY: mixed images version
+// HERO GALLERY: mixed images version with gold overlay text
 async function initHeroGalleryMixed() {
   const container = document.getElementById("heroGallery");
   if (!container) return;
@@ -47,7 +47,7 @@ async function initHeroGalleryMixed() {
     const gallery = document.createElement("div");
     gallery.className = "gallery";
 
-    // Split images roughly evenly across 4 strips
+    // Split images evenly across 4 strips
     const strips = [[], [], [], []];
     allImages.forEach((img, idx) => {
       strips[idx % 4].push(img);
@@ -75,8 +75,8 @@ async function initHeroGalleryMixed() {
         imgWrap.appendChild(img);
 
         const name = document.createElement("div");
-        name.className = "photo__name";
-        name.textContent = item.name || "";
+        // name.className = "photo__name";
+        // name.textContent = item.name || "";
 
         strip.appendChild(photo);
         photo.appendChild(imgWrap);
@@ -93,6 +93,7 @@ async function initHeroGalleryMixed() {
   }
 }
 
+// Initialize on DOM load
 document.addEventListener("DOMContentLoaded", () => {
   initHeroGalleryMixed();
 });
