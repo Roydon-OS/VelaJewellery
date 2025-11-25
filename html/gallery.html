@@ -12,14 +12,21 @@
       <div class="container nav-inner">
         <div class="logo">Véla Jewellery</div>
         <nav>
-          <ul class="nav-links">
+          <ul class="nav-links" id="navLinks">
             <li><a href="/index.html">Home</a></li>
             <li><a href="/html/gallery.html" class="active">Gallery</a></li>
             <li><a href="/html/about.html">About</a></li>
             <li><a href="/html/contact.html">Contact</a></li>
           </ul>
         </nav>
-        <div class="mobile-menu-btn" id="mobileMenuBtn">☰</div>
+        <button
+          class="mobile-menu-btn"
+          id="mobileMenuBtn"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          ☰
+        </button>
       </div>
     </header>
 
@@ -38,6 +45,32 @@
       <div id="gallery-error" class="error" hidden></div>
     </main>
 
+    <!-- LIGHTBOX / MODAL -->
+    <div
+      id="lightbox"
+      class="lightbox"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="Product preview"
+    >
+      <div class="lightbox-inner" role="document">
+        <button
+          class="lightbox-close"
+          id="lightboxClose"
+          aria-label="Close preview"
+        >
+          ✕
+        </button>
+        <div class="lightbox-media">
+          <img src="" alt="" id="lightboxImage" />
+        </div>
+        <div class="lightbox-info">
+          <h3 id="lightboxName"></h3>
+          <p class="lightbox-price" id="lightboxPrice"></p>
+        </div>
+      </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container footer-inner">
@@ -45,7 +78,6 @@
       </div>
     </footer>
 
-    <!-- JS -->
     <script src="/js/gallery.js" defer></script>
   </body>
 </html>

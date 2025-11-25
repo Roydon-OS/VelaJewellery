@@ -76,17 +76,21 @@ body {
 .hero {
   position: relative;
   height: 85vh;
-  background: url("images/hero.jpg") center/cover no-repeat;
+  background: none;
+  overflow: hidden;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-content {
-  position: absolute;
+  position: relative;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -124,8 +128,40 @@ body {
 }
 
 .btn.small {
+  display: inline-block;
   font-size: 1rem;
-  padding: 8px 20px;
+  padding: 10px 25px;
+  border: 2px solid var(--gold-1);
+  border-radius: 25px;
+  background: transparent;
+  color: var(--gold-1);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn.small::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: skewX(-25deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.btn.small:hover {
+  background: var(--gold-1);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.btn.small:hover::after {
+  left: 100%;
 }
 
 /* FEATURED SECTION */
@@ -156,6 +192,7 @@ body {
   outline-offset: 2px;
 }
 
+/* Elegant Card Hover */
 .card {
   display: flex;
   flex-direction: column;
@@ -163,12 +200,37 @@ body {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
-  transition: 0.3s;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
   cursor: pointer;
+  position: relative;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  left: 125%;
+  transition: 0.7s ease-in-out;
 }
 
 .card-img {
@@ -181,6 +243,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-img img {
+  transform: scale(1.1);
 }
 
 .card-info {
@@ -225,7 +292,9 @@ body {
   font-size: 1.2rem;
   color: var(--muted);
 }
-
+.about-text .btn.small {
+  margin-top: 20px; /* <-- add this line */
+}
 .about-img {
   width: 50%;
   border-radius: 10px;
@@ -282,13 +351,6 @@ body {
 }
 
 /* HERO GALLERY */
-.hero {
-  position: relative;
-  height: 85vh;
-  background: none;
-  overflow: hidden;
-}
-
 .hero-gallery {
   position: absolute;
   inset: 0;
@@ -390,8 +452,8 @@ body {
   text-transform: uppercase;
   font-size: 40px;
   letter-spacing: 2px;
-  color: var(--gold-1); /* changed from white to gold */
-  -webkit-text-stroke-width: 0px; /* remove stroke */
+  color: var(--gold-1);
+  -webkit-text-stroke-width: 0px;
   margin-top: -25px;
   transition: 0.4s ease-in-out 0.4s;
   position: relative;
@@ -402,12 +464,10 @@ body {
 .hero-gallery .photo:hover .photo__image img {
   transform: translateX(0%);
 }
+
 .hero-gallery .photo:hover .photo__name {
-  color: var(--gold-4); /* lighter gold on hover */
+  color: var(--gold-4);
 }
-/* .hero-gallery .photo__name {
-  display: none;
-} */
 
 /* Keyframes for animation */
 @keyframes move-it {
